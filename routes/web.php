@@ -16,7 +16,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('edit-post', [
             'tinyEditorApiKey' => env('TINY_EDITOR_API_KEY'),
         ]);
-    })->name('dashboard');
+    })->name('post.edit');
 });
 
 require __DIR__ . '/settings.php';
