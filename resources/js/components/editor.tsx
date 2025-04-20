@@ -1,7 +1,8 @@
 import { Editor as TinyEditor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
+import { TagSelector } from './tag-selector';
 
-export default function Editor({ apiKey }: { apiKey: string }) {
+export default function Editor() {
     const editorRef = useRef(null);
     const log = () => {
         if (editorRef.current) {
@@ -11,6 +12,8 @@ export default function Editor({ apiKey }: { apiKey: string }) {
     };
     return (
         <>
+            <TagSelector />
+
             <TinyEditor
                 apiKey={import.meta.env.VITE_TINY_EDITOR_API_KEY}
                 onInit={(_evt, editor) => (editorRef.current = editor)}
