@@ -8,9 +8,9 @@ export default function Welcome() {
             <Head title="Início" />
             <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
             <div className="text-foreground z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center p-6 lg:p-8">
-                <header className="z-50 mb-6 flex w-full items-center justify-between text-sm not-has-[nav]:hidden">
+                <header className="z-50 mb-6 flex w-full flex-col justify-between gap-4 text-sm not-has-[nav]:hidden sm:flex-row sm:items-center">
                     <h1 className="text-foreground text-xl font-bold">Fran Diez</h1>
-                    <nav className="flex items-center justify-end gap-4">
+                    <nav className="flex items-center gap-4">
                         {auth.user && (
                             <Link
                                 href={route('dashboard')}
@@ -36,7 +36,7 @@ export default function Welcome() {
                 </header>
                 <div className="z-10 py-14 md:py-24">
                     <h1 className="text-4xl leading-tight font-bold tracking-tight md:text-5xl">
-                        Explorando el desarrollo de software con PHP, JavaScript, y más.
+                        Explorando el desarrollo web con PHP, Laravel, React y más.
                     </h1>
                 </div>
                 <main className="z-10 w-full">
