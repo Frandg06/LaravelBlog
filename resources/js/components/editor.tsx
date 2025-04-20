@@ -12,7 +12,7 @@ export default function Editor({ apiKey }: { apiKey: string }) {
     return (
         <>
             <TinyEditor
-                apiKey={apiKey}
+                apiKey={import.meta.env.VITE_TINY_EDITOR_API_KEY}
                 onInit={(_evt, editor) => (editorRef.current = editor)}
                 initialValue=""
                 init={{

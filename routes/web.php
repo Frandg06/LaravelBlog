@@ -13,9 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('edit-post', function () {
-        return Inertia::render('edit-post', [
-            'tinyEditorApiKey' => env('TINY_EDITOR_API_KEY'),
-        ]);
+        return Inertia::render('edit-post');
     })->name('post.edit');
 });
 
