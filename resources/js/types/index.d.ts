@@ -41,3 +41,38 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Tag {
+    id: number;
+    name: string;
+    slug: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Post {
+    id: number;
+    title: string;
+    time_to_read: number;
+    content: string;
+    created_at: string;
+    updated_at: string;
+}
+
+interface PageEditPostProps {
+    tags: Tag[];
+    name: string;
+    quote: { message: string; author: string };
+    ziggy: Config & { location: string };
+    sidebarOpen: boolean;
+    [key: string]: unknown;
+}
+
+interface PagePostProps {
+    post: Post;
+    name: string | TrustedHTML;
+    quote: { message: string; author: string };
+    ziggy: Config & { location: string };
+    sidebarOpen: boolean;
+    [key: string]: unknown;
+}

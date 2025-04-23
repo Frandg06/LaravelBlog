@@ -1,22 +1,15 @@
 import { Editor as TinyEditor } from '@tinymce/tinymce-react';
-import { useRef } from 'react';
-import { TagSelector } from './tag-selector';
 
-export default function Editor() {
-    const editorRef = useRef(null);
-    const log = () => {
-        if (editorRef.current) {
-            // @ts-expect-error no types for tinymce
-            console.log(editorRef.current.getContent());
-        }
-    };
+interface EditorProps {
+    ref: React.RefObject<any>;
+}
+
+export default function Editor({ ref }: EditorProps) {
     return (
         <>
-            <TagSelector />
-
             <TinyEditor
                 apiKey={import.meta.env.VITE_TINY_EDITOR_API_KEY}
-                onInit={(_evt, editor) => (editorRef.current = editor)}
+                onInit={(_evt, editor) => (ref.current = editor)}
                 initialValue=""
                 init={{
                     height: 800,
@@ -41,13 +34,28 @@ export default function Editor() {
                         'help',
                         'wordcount',
                         'image',
+                        'codesample',
+                        'code',
                     ],
                     toolbar:
                         'undo redo | blocks | ' +
                         'bold italic forecolor | alignleft aligncenter ' +
                         'alignright alignjustify | bullist numlist outdent indent | ' +
                         'image |' +
+                        'codesample code |' +
                         'removeformat | help',
+                    codesample_languages: [
+                        { text: 'HTML/XML', value: 'markup' },
+                        { text: 'JavaScript', value: 'javascript' },
+                        { text: 'CSS', value: 'css' },
+                        { text: 'PHP', value: 'php' },
+                        { text: 'Ruby', value: 'ruby' },
+                        { text: 'Python', value: 'python' },
+                        { text: 'Java', value: 'java' },
+                        { text: 'C', value: 'c' },
+                        { text: 'C#', value: 'csharp' },
+                        { text: 'C++', value: 'cpp' },
+                    ],
                     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                     images_file_types: 'jpg,svg,webp',
                     automatic_uploads: true,
@@ -83,7 +91,6 @@ export default function Editor() {
                     },
                 }}
             />
-            <button onClick={log}>Log editor content</button>
         </>
     );
 }
